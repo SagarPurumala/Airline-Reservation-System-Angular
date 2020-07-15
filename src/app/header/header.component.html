@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+
+  <a class="navbar-brand" routerLink="#" style="color: white;"><b><i class="fa fa-plane" aria-hidden="true"></i>WegoAirways</b></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/" style="color: white;" >Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" *ngIf="isAdmin()">
+        <a class="nav-link" routerLink="/flightInfo" style="color: white;">Flight Info<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" *ngIf="isCustomer()">
+        <a class="nav-link" routerLink="/preview" style="color: white;">Search Flight<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" *ngIf="isAdmin()">
+        <a class="nav-link" routerLink="/category" style="color: white;">Category<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" *ngIf="isAdmin()">
+        <a class="nav-link" routerLink="/add-flight" style="color: white;">Add Flight<span class="sr-only">(current)</span></a>
+      </li>
+      <!-- <li class="nav-item active">
+        <a class="nav-link" routerLink="/payment" style="color: white;">Payment<span class="sr-only">(current)</span></a>
+      </li> -->
+      
+      <li class="nav-item active" *ngIf="isAdmin()">
+        <a class="nav-link" routerLink="/airport" style="color: white;">Airport Details<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" *ngIf="isAdmin()">
+        <a class="nav-link" routerLink="/add-airport"  style="color: white;">Add Airport<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown" *ngIf="isCustomer()">
+        <a class="nav-link dropdown-toggle" routerLink="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false" style="color: white;">
+          My Profile
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/profile">My Details</a>
+        </div>
+      </li>
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item active" *ngIf=(!isCustomer()&&!isAdmin())>
+          <a class="nav-link" routerLink="/login" style="color: white;"><i class="fa fa-sign-in" aria-hidden="true">Login</i></a>
+        </li>
+        <li class="nav-item active" *ngIf=(isCustomer()||isAdmin())>
+          <a class="nav-link" (click)="logout()" style="color: white;"><i class="fa fa-sign-out">Logout </i></a>
+
+        </li>
+
+      </ul>
+    </ul>
+  </div>
+</nav>

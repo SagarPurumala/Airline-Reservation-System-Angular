@@ -1,0 +1,8 @@
+body {
+    background-image: url('https://cdn.pixabay.com/photo/2019/09/27/17/22/payment-4509003__340.jpg');
+    background-size: cover;
+    height: 600px;
+    background-position-x: center;
+    background-position-y: center;
+    background-attachment: fixed;
+}

@@ -1,0 +1,151 @@
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="card card-bookticket my-5">
+                    <div class="card-body">
+                        <h4 class="card-title text-center">Book Ticket</h4>
+
+                        <form #bookForm='ngForm' (ngSubmit)='bookTicket(bookForm)'>
+                            <div class="form-group">
+                                <label for="flightNo">Flight Number</label>
+                                <input type="text" name="flightNo" #flightNo='ngModel' class="form-control"
+                                    [(ngModel)]="fNumber">
+                            </div>
+                            <div *ngIf='flightNo.touched && flightNo.invalid'>
+                                <p *ngIf='flightNo.errors.required'>
+                                    This field is required</p>
+                                <p *ngIf='flightNo.errors.minlength'>This
+                                    field requires 5
+                                    characters</p>
+                                <p *ngIf='flightNo.errors.flightNo'>
+                                    this field accept
+                                    valid flight numbers only</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="departureDate">Departure Date</label>
+                                <input type="text" name="departureDate" class="form-control" #departureDate='ngModel'
+                                    [(ngModel)]="dDate" required>
+                            </div>
+                            <div *ngIf='departureDate.touched && departureDate.invalid'>
+                                <p *ngIf='airline.errors.required'>
+                                    This field is required</p>
+                                <p *ngIf='departureDate.errors.minlength'>This
+                                    field requires 4
+                                    characters</p>
+                                <p *ngIf='departureDate.errors.departureDate'>
+                                    this field accept
+                                    City only</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="arrivalDate">Arrival Date</label>
+                                <input type="text" name="arrivalDate" class="form-control" #arrivalDate='ngModel'
+                                    [(ngModel)]="aDate" required>
+                            </div>
+                            <div *ngIf='arrivalDate.touched && arrivalDate.invalid'>
+                                <p *ngIf='arrivalDate.errors.required'>
+                                    This field is required</p>
+                                <p *ngIf='arrivalDate.errors.minlength'>This
+                                    field requires 4
+                                    characters</p>
+                                <p *ngIf='arrivalDate.errors.arrivalDate'>
+                                    this field accept
+                                    City only</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="departureTime">Departure Time</label>
+                                <input type="text" name="departureTime" class="form-control" #departureTime='ngModel'
+                                    [(ngModel)]="dTime" required>
+                            </div>
+                            <div *ngIf='departureTime.touched && departureTime.invalid'>
+                                <p *ngIf='airline.errors.required'>
+                                    This field is required</p>
+                                <p *ngIf='departureTime.errors.minlength'>This
+                                    field requires 4
+                                    characters</p>
+                                <p *ngIf='departureTime.errors.departureTime'>
+                                    this field accept
+                                    City only</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="arrivalTime">Arrival Time</label>
+                                <input type="text" name="arrivalTime" class="form-control" #arrivalTime='ngModel'
+                                    [(ngModel)]="aTime">
+                            </div>
+                            <div *ngIf='arrivalTime.touched && arrivalTime.invalid'>
+                                <p *ngIf='airline.errors.required'>
+                                    This field is required</p>
+                                <p *ngIf='arrivalTime.errors.minlength'>This
+                                    field requires 4
+                                    characters</p>
+                                <p *ngIf='arrivalTime.errors.arrivalTime'>
+                                    this field accept
+                                    City only</p>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputFirstName">FirstName</label>
+                                    <input type="FirstName" name="firstName" class="form-control" #firstName='ngModel'
+                                        ngModel placeholder="Enter First Name" required>
+                                </div>
+                                <div *ngIf='FirstName.touched && FirstName.invalid'>
+                                    <p *ngIf='FirstName.errors.required'>This field is
+                                        required</p>
+
+                                    <p *ngIf='FirstName.errors.minlength'>This field
+                                        requires 2 characters</p>
+
+                                    <p *ngIf='FirstName.errors.FirstName'> this field
+                                        accept alphabets only</p>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputLastName">LastName</label>
+                                    <input type="lastName" name="lastName" class="form-control" #lastName='ngModel'
+                                        ngModel placeholder="Enter Last Name" required>
+                                </div>
+                                <div *ngIf='LastName.touched && LastName.invalid'>
+                                    <p *ngIf='LastName.errors.required'>This field is
+                                        required</p>
+
+                                    <p *ngIf='LastName.errors.minlength'>This field
+                                        requires 2 characters</p>
+
+                                    <p *ngIf='LastName.errors.LastName'> this field
+                                        accept alphabets only</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="passengers">No. of passengers</label>
+                                <select id="passengers" class="form-control" name="passengers" #passengers="ngModel"
+                                    ngModel>
+                                    <option selected></option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputClassType">Choose Class</label>
+                                <select id="inputClassType" class="form-control" name="userclassType"
+                                    #classType="ngModel" ngModel>
+                                    <option selected></option>
+                                    <option value="Bussiness">Bussiness</option>
+                                    <option value="First Class">First Class</option>
+                                </select>
+                            </div>
+
+
+
+
+                            <button type="submit" class="btn btn-outline-dark" [disabled]='bookForm.invalid'>Book
+                                Now</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

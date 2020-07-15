@@ -1,0 +1,8 @@
+body {
+    background-image: url('https://cdn.pixabay.com/photo/2015/11/20/06/17/wait-1052487__340.jpg');
+    background-size: cover;
+    height: 600px;
+    background-position-x: center;
+    background-position-y: center;
+    background-attachment: fixed;
+}

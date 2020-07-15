@@ -1,0 +1,255 @@
+<body>
+<div class="container mt-5">
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Index</th>
+                <th>Abbrevation</th>
+                <th>Airport Name</th>
+                <th>State</th>
+                <th>City</th>
+                <th>Zip Code</th>
+                <th>Delete Airport</th>
+                <th>Update Airport</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let airport of airportInfo ; index as i">
+                <td>{{i+1}}</td>
+                <td>{{airport.abbreviation}}</td>
+                <td>{{airport.airportName}}</td>
+                <td>{{airport.state}}</td>
+                <td>{{airport.city}}</td>
+                <td>{{airport.zipCode}}</td>
+
+                <td>
+                    <button class="btn btn-danger" (click)='deleteAirport(airport)'>Cancel</button>
+                </td>
+                <td>
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                        data-target="#exampleModalScrollable" (click)="selectAirport(airport)">
+                        Update
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalScrollableTitle">Update Details</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form #updateAirport="ngForm" (ngSubmit)="updateAirportInfo(updateAirport)">
+                                        <div class="form-group">
+                                            <label for="airportName">Airport Number</label>
+                                            <input type="text" name="airportName" #AirportNumber='ngModel'
+                                                class="form-control" [(ngModel)]="selectedAirport.airportName">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="abbreviation">Abbreviation</label>
+                                            <input type="text" name="abbreviation" #abbreviation='ngModel'
+                                                class="form-control" [(ngModel)]="selectedAirport.abbreviation">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="state">State</label>
+                                            <input type="text" name="state" #state='ngModel' class="form-control"
+                                                [(ngModel)]="selectedAirport.state">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="zipCode">Zip Code</label>
+                                            <input type="text" name="zipCode" #zipCode='ngModel' class="form-control"
+                                                [(ngModel)]="selectedAirport.zipCode">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="city">City</label>
+                                            <input type="text" name="city" #city='ngModel' class="form-control"
+                                                [(ngModel)]="selectedAirport.city">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="reset" class="btn btn-secondary" data-dismiss="modal">Reset</button>
+
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#exampleModal" (click)="updateAirportInfo(updateAirport)">
+                                        Update
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </td>
+
+                <!--     <button class="btn btn-danger" (click)='cancelAirport(Airport)'>Cancel</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+                        (click)="selectAirport(Airport)">
+                        Update
+                    </button>
+                    <div class="modal fade text-dark" id="exampleModal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalLabel">Update Info</h5>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                        (click)="arsServicesService.putAirportInfo()" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form #updateAirport="ngForm" (ngSubmit)="updateAirportDetails(updateAirport)">
+                                        <div class="form-group">
+                                            <label for="AirportNumber">Airport Number</label>
+                                            <input type="text" name="AirportNumber" #AirportNumber='ngModel'
+                                                class="form-control" [(ngModel)]="selectedAirport.AirportNumber">
+                                        </div>
+                                        <div class="alert alert-danger"
+                                            *ngIf='AirportNumber.touched && AirportNumber.invalid'>
+                                            <p class="alert alert-danger" *ngIf='AirportNumber.errors.required'>
+                                                This field is required</p>
+                                            <p class="alert alert-danger" *ngIf='AirportNumber.errors.minlength'>This
+                                                field requires 5
+                                                characters</p>
+                                            <p class="alert alert-danger" *ngIf='AirportNumber.errors.AirportNumber'>
+                                                this field accept
+                                                valid Airport numbers only</p>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label for="departureCity">Departure City</label>
+                                            <input type="text" name="departureCity" #departureCity='ngModel'
+                                                class="form-control" [(ngModel)]="selectedAirport.departureCity">
+                                        </div>
+                                        <div class="alert alert-danger"
+                                            *ngIf='departureCity.touched && departureCity.invalid'>
+                                            <p class="alert alert-danger" *ngIf='departureCity.errors.required'>
+                                                This field is required</p>
+                                            <p class="alert alert-danger" *ngIf='departureCity.errors.minlength'>This
+                                                field requires 4
+                                                characters</p>
+                                            <p class="alert alert-danger" *ngIf='departureCity.errors.AirportNumber'>
+                                                this field accept
+                                                City only</p>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label for="arrivalCity">Arrival City</label>
+                                            <input type="text" name="arrivalCity" class="form-control"
+                                                #arrivalCity='ngModel' [(ngModel)]="selectedAirport.arrivalCity"
+                                                required>
+                                        </div>
+                                        <div class="alert alert-danger"
+                                            *ngIf='arrivalCity.touched && arrivalCity.invalid'>
+                                            <p class="alert alert-danger" *ngIf='arrivalCity.errors.required'>
+                                                This field is required</p>
+                                            <p class="alert alert-danger" *ngIf='arrivalCity.errors.minlength'>This
+                                                field requires 4
+                                                characters</p>
+                                            <p class="alert alert-danger" *ngIf='arrivalCity.errors.arrivalCity'>
+                                                this field accept
+                                                City only</p>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="airline">Airline</label>
+                                            <input type="text" name="airline" class="form-control" #airline='ngModel'
+                                                [(ngModel)]="selectedAirport.airline" required>
+                                        </div>
+                                        <div class="alert alert-danger" *ngIf='airline.touched && arrivalCity.invalid'>
+                                            <p class="alert alert-danger" *ngIf='airline.errors.required'>
+                                                This field is required</p>
+                                            <p class="alert alert-danger" *ngIf='airline.errors.minlength'>This
+                                                field requires 4
+                                                characters</p>
+                                            <p class="alert alert-danger" *ngIf='airline.errors.arrivalCity'>
+                                                this field accept
+                                                City only</p>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="departureDate">Departure Date</label>
+                                            <input type="text" name="departureDate" class="form-control"
+                                                #departureDate='ngModel' [(ngModel)]="selectedAirport.departureDate"
+                                                required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="arrivalDate">Arrival Date</label>
+                                            <input type="text" name="arrivalDate" class="form-control"
+                                                #arrivalDate='ngModel' [(ngModel)]="selectedAirport.arrivalDate"
+                                                required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="departureTime">Departure Time</label>
+                                            <input type="text" name="departureTime" class="form-control"
+                                                #departureTime='ngModel' [(ngModel)]="selectedAirport.departureTime"
+                                                required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="arrivalTime">Arrival Time</label>
+                                            <input type="text" name="arrivalTime" class="form-control"
+                                                #arrivalTime='ngModel' [(ngModel)]="selectedAirport.arrivalTime">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="firstClassSeats">First Class Seat</label>
+                                            <input type="number" name="firstClassSeats" class="form-control"
+                                                #firstClassSeats='ngModel' [(ngModel)]="selectedAirport.firstClassSeats"
+                                                required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="firstClassSeatFare">First Class Seat Fare</label>
+                                            <input type="number" name="firstClassSeatFare" class="form-control"
+                                                #firstClassSeatFare='ngModel'
+                                                [(ngModel)]="selectedAirport.firstClassSeatFare" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="bussinessClassSeats">Business Class Seat</label>
+                                            <input type="number" name="bussinessClassSeats" class="form-control"
+                                                #bussinessClassSeats='ngModel'
+                                                [(ngModel)]="selectedAirport.bussinessClassSeats" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="bussinessClassSeatFare">Business Class Seat Fare</label>
+                                            <input type="number" name="bussinessClassSeatFare" class="form-control"
+                                                #bussinessClassSeatFare='ngModel'
+                                                [(ngModel)]="selectedAirport.bussinessClassSeatFare" required>
+                                        </div>
+                                        <!-- <div class="form-group">
+                                                <label for="bussinessClassSeatFare">Business Class Seat Fare</label>
+                                                <input type="number" name="bussinessClassSeatFare" class="form-control"
+                                                    #bussinessClassSeatFare='ngModel'
+                                                    [(ngModel)]="selectedAirport.bussinessClassSeatFare" required>
+                                            </div> -->
+                <!-- <div class="btn-group float-right">
+                                            <button type="reset" class="btn btn-outline-dark">Reset</button>
+                                            <button type="submit" class="btn btn-outline-primary"
+                                                [disabled]='updateAirport.invalid'>Submit</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div> -->
+
+                <!-- </td> -->
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>

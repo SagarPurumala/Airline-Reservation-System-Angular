@@ -1,0 +1,112 @@
+<body>
+    <div class="container">
+        <div class="card col-md-8 col-lg-5">
+            <div class="card-body">
+                <form #addAccountByAdmin="ngForm" (ngSubmit)="registerForm(addAccountByAdmin)">
+                    <div class="form-group">
+
+
+                        <div>
+                            <label for="exampleFormControlSelect1">Select Role</label>
+                            <select class="form-control" name="userRole" id="role" #role="ngModel" ngModel>
+                                <option>admin</option>
+                                <option>user</option>
+
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="inputFirstName">First Name</label>
+                        <input type="text" #userFirstName="ngModel" ngModel id="userFirstName" name="userFirstName"
+                            required minlength="2" class="form-control" placeholder="Enter first name">
+                    </div>
+                    <div class="alert alert-danger" *ngIf='userFirstName.touched && userFirstName.invalid'>
+                        <p class="alert alert-danger" *ngIf='userFirstName.errors.required'>
+                            This field is required</p>
+
+                        <p class="alert alert-danger" *ngIf='userFirstName.errors.minlength'>This field requires 2
+                            characters</p>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="inputLastName">Last Name</label>
+                        <input type="text" #userLastName="ngModel" ngModel id="userLastName" name="userLastName"
+                            required minlength="2" class="form-control" placeholder="Enter last name">
+                    </div>
+                    <div class="alert alert-danger" *ngIf='userLastName.touched && userLastName.invalid'>
+                        <p class="alert alert-danger" *ngIf='userLastName.errors.required'>
+                            This field is required</p>
+
+                        <p class="alert alert-danger" *ngIf='userLastName.errors.minlength'>
+                            This field requires 2 characters</p>
+
+
+                    </div>
+                    <div class="form-group">
+                        <label for="inputuserEmail">userEmail</label>
+                        <input type="text" name="userEmail" class="form-control" #userEmail="ngModel" ngModel
+                            id="inputuserEmail" placeholder="Enter email address">
+                        <div class="alert alert-danger" *ngIf="userEmail.errors?.required && userEmail.touched">
+                            userEmail is required</div>
+                        <div class="alert alert-danger" *ngIf="userEmail.errors?.userEmail && userEmail.touched">
+                            userEmail is required</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number(userContact):</label>
+                        <input type="text" #userContact="ngModel" ngModel id="number" name="userContact" required
+                            minlength="10" maxlength="10" class="form-control" placeholder="Enter contact number">
+                    </div>
+                    <div class="alert alert-danger" *ngIf='userContact.touched && userContact.invalid'>
+                        <p class="alert alert-danger" *ngIf='userContact.errors.required'>
+                            This field is required</p>
+
+                        <p class="alert alert-danger" *ngIf='userContact.errors.minlength'>
+                            This field requires 10 characters</p>
+
+                        <p class="alert alert-danger" *ngIf='userContact.errors.maxlength'> this field accept 10cdigit
+                            only</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="userId">User Id</label>
+                        <input type="userId" #userId='ngModel' ngModel name="userId" required minlength="6"
+                            class="form-control" placeholder="Enter User ID">
+                    </div>
+                    <div class="alert alert-danger" *ngIf='userId.touched && userId.invalid'>
+                        <p class="alert alert-danger" *ngIf='userId.errors.required'>This
+                            field is required</p>
+
+                        <p class="alert alert-danger" *ngIf='userId.errors.minlength'>This
+                            field requires 6 characters</p>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="userPassword">Password:</label>
+                        <input type="userPassword" #userPassword='ngModel' ngModel name="userPassword" required
+                            minlength="8" maxlength="15" class="form-control" placeholder="Enter password">
+                    </div>
+                    <div class="alert alert-danger" *ngIf='userPassword.touched && userPassword.invalid'>
+                        <p class="alert alert-danger" *ngIf='userPassword.errors.required'>
+                            This field is required</p>
+
+                        <p class="alert alert-danger" *ngIf='userPassword.errors.minlength'>
+                            This field requires 8 characters</p>
+
+                        <p class="alert alert-danger" *ngIf='userPassword.errors.maxlength'>
+                            This field requires 15 characters</p>
+                    </div>
+
+                    <div class="btn-group float-right">
+                        <button type="reset" class="btn btn-outline-danger">Reset</button>
+                        <button type="submit" class="btn btn-outline-success"
+                            [disabled]='registerForm.invalid'>Submit</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</body>

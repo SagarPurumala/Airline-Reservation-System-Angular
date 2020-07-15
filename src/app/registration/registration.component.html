@@ -1,0 +1,97 @@
+<body>
+  <div class="container" >
+    <div class="alert alert-success" *ngIf='message'>{{message}}</div>
+    <div class="card col-md-6 col-6 col-sm-6 col-lg-6 offset-3" style="background-color:ivory;">
+      <div class="card-body">
+        <h2 class="card-title text-center"><strong>Sign Up</strong></h2>
+        <form #addUser="ngForm" (ngSubmit)="submitForm(addUser)">
+
+          <div class="form-group">
+            <label for="inputFirstName">First Name</label>
+            <input type="text" #userFirstName="ngModel" ngModel id="userFirstName" name="userFirstName" required
+              minlength="2" class="form-control" placeholder="Enter First Name">
+          </div>
+          <div *ngIf='userFirstName.touched && userFirstName.invalid'>
+            <p *ngIf='userFirstName.errors.required'>
+              This field is required</p>
+
+            <p *ngIf='userFirstName.errors.minlength'>This field requires 2
+              characters</p>
+          </div>
+
+          <div class="form-group">
+            <label for="inputLastName">Last Name</label>
+            <input type="text" #userLastName="ngModel" ngModel id="userLastName" name="userLastName" required
+              minlength="2" class="form-control" placeholder="Enter Last Name">
+          </div>
+          <div *ngIf='userLastName.touched && userLastName.invalid'>
+            <p *ngIf='userLastName.errors.required'>
+              This field is required</p>
+
+            <p *ngIf='userLastName.errors.minlength'>
+              This field requires 2 characters at least</p>
+          </div>
+          <div class="form-group">
+            <label for="inputuserEmail">Email</label>
+            <input type="text" name="userEmail" class="form-control" #userEmail="ngModel" ngModel id="inputuserEmail"
+              placeholder="Enter Email address" required email>
+          </div>
+          <div *ngIf='userLastName.touched && userEmail.invalid'>
+            <p *ngIf='userEmail.errors.required'>
+              This field is required</p>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="text" #userContact="ngModel" ngModel id="number" name="userContact" required minlength="10"
+              maxlength="10" class="form-control" placeholder="Enter Contact number">
+          </div>
+          <div *ngIf='userContact.touched && userContact.invalid'>
+            <p *ngIf='userContact.errors.required'>
+              This field is required</p>
+            <p *ngIf='userContact.errors.minlength'>
+              This field requires 10 characters Only</p>
+            <p *ngIf='userContact.errors.maxlength'>
+              This field requires 10 characters Only</p>
+          </div>
+          <div class="form-group">
+            <label for="userId">User Id</label>
+            <input type="userId" #userId='ngModel' ngModel name="userId" required minlength="6" class="form-control"
+              placeholder="Enter User ID">
+          </div>
+          <div *ngIf='userId.touched && userId.invalid'>
+            <p *ngIf='userId.errors.required'>This
+              field is required</p>
+
+            <p *ngIf='userId.errors.minlength'>This
+              field requires 6 characters Only</p>
+
+
+          </div>
+          <div class="form-group">
+            <label for="userPassword">Password:</label>
+            <input type="password" #userPassword='ngModel' ngModel name="userPassword" required minlength="8"
+              maxlength="15" class="form-control" placeholder="Enter Password">
+          </div>
+          <div *ngIf='userPassword.touched && userPassword.invalid'>
+            <p *ngIf='userPassword.errors.required'>
+              This field is required</p>
+
+            <p *ngIf='userPassword.errors.minlength'>
+              This field requires 8 characters </p>
+            <p *ngIf='userPassword.errors.maxlength'>
+              This field requires 15 characters </p>
+          </div>
+          <div class="btn-group float-right">
+            <button type="reset" class="btn btn-outline-primary">Reset</button>
+            <button type="submit" class="btn btn-outline-dark" [disabled]='submitForm.invalid'>Submit</button>
+          </div>
+
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+</body>
