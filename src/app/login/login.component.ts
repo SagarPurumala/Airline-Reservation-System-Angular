@@ -16,26 +16,24 @@ export class LoginComponent implements OnInit {
   login(loginForm: NgForm) {
     console.log(loginForm.value);
     this.service.userLogin(loginForm.value).subscribe(data => {
-      // if(data.status===400){
+      // if(data.status===500){
       //   this.message=data.message;
       //   setTimeout(()=>{
       //     this.message=null;
       //   },4000)
       // }
-  
       console.log(data);
       console.log(data.role);
       console.log(data.userId)
+      localStorage.setItem('userId',data.userId);
       localStorage.getItem('userId');
-
       alert("Welcome !!!");
-
       localStorage.setItem('user', JSON.stringify(data))
       this.router.navigateByUrl("/");
-  
       
     }, err => {
       console.log(err);
+      alert("Invalid UserId or Password")
     })
   }
 

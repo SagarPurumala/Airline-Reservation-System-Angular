@@ -20,6 +20,7 @@ import { SearchedFlightComponent } from './searched-flight/searched-flight.compo
 import { ProfileComponent } from './profile/profile.component';
 import { AirportComponent } from './airport/airport.component';
 import { AddAirportComponent } from './add-airport/add-airport.component';
+import { SearchFlightHomeComponent } from './search-flight-home/search-flight-home.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { AddAirportComponent } from './add-airport/add-airport.component';
     
     AirportComponent,
     AddAirportComponent,
+    SearchFlightHomeComponent,
   ],
   imports: [
     BrowserModule,

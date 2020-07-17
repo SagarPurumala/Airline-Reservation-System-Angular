@@ -14,30 +14,33 @@
         <a class="nav-link" routerLink="/" style="color: white;" >Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active" *ngIf="isAdmin()">
-        <a class="nav-link" routerLink="/flightInfo" style="color: white;">Flight Info<span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/flightInfo" style="color: white;">Flight Info</a>
       </li>
       <li class="nav-item active" *ngIf="isCustomer()">
-        <a class="nav-link" routerLink="/preview" style="color: white;">Search Flight<span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/preview" style="color: white;">Search Flight</a>
+      </li>
+      <li class="nav-item active" *ngIf="isCustomer()">
+        <a class="nav-link" routerLink="/profile"style="color: white;">Booking Details</a>
       </li>
       <li class="nav-item active" *ngIf="isAdmin()">
-        <a class="nav-link" routerLink="/category" style="color: white;">Category<span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/category" style="color: white;">Category</a>
       </li>
       <li class="nav-item active" *ngIf="isAdmin()">
-        <a class="nav-link" routerLink="/add-flight" style="color: white;">Add Flight<span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/add-flight" style="color: white;">Add Flight</a>
       </li>
-      <!-- <li class="nav-item active">
-        <a class="nav-link" routerLink="/payment" style="color: white;">Payment<span class="sr-only">(current)</span></a>
-      </li> -->
+      <li class="nav-item active" *ngIf=(!isCustomer()&&!isAdmin())>
+        <a class="nav-link" routerLink="/search-flight" style="color: white;">Search Flight</a>
+      </li>
       
       <li class="nav-item active" *ngIf="isAdmin()">
-        <a class="nav-link" routerLink="/airport" style="color: white;">Airport Details<span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/airport" style="color: white;">Airport Details</a>
       </li>
       <li class="nav-item active" *ngIf="isAdmin()">
-        <a class="nav-link" routerLink="/add-airport"  style="color: white;">Add Airport<span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/add-airport"  style="color: white;">Add Airport</a>
       </li>
     </ul>
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item dropdown" *ngIf="isCustomer()">
+    
+      <!-- <li class="nav-item dropdown" *ngIf="isCustomer()">
         <a class="nav-link dropdown-toggle" routerLink="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false" style="color: white;">
           My Profile
@@ -45,9 +48,11 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" routerLink="/profile">My Details</a>
         </div>
-      </li>
+      </li> -->
       <ul class="navbar-nav ml-auto">
-
+        <li class="nav-item active" *ngIf=(!isCustomer()&&!isAdmin())>
+          <a class="nav-link" routerLink="/register" style="color: white;"><i class="fa fa-sign-in" aria-hidden="true">Register</i></a>
+        </li>
         <li class="nav-item active" *ngIf=(!isCustomer()&&!isAdmin())>
           <a class="nav-link" routerLink="/login" style="color: white;"><i class="fa fa-sign-in" aria-hidden="true">Login</i></a>
         </li>
@@ -57,6 +62,6 @@
         </li>
 
       </ul>
-    </ul>
+   
   </div>
 </nav>

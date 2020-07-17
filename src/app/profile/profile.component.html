@@ -1,53 +1,19 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<body>
- <!-- <div class="card col-md-8 col-4 col-sm-4 col-lg-4 offset-3 mt-5" style="background-color: rgb(227, 227, 235);">
-    <div class="card-body"> -->
-        <!-- <form #searchForm="ngForm" (click)="getProfiles(ProfileInfo)">
-            <div class="form-group">
-                <label for="userId" >UserId :</label>
-              <input type="text"  name="userId" style="padding-right: 80px;">
-
-            </div>
-            <div class="btn-group float-right">
-                <button type="submit" class="btn btn-outline-primary"
-                    [disabled]='searchForm.invalid'>Search</button>
-            </div>
-        </form> -->
-        <form #searchForm='ngForm' (ngSubmit)=' getProfiles(searchForm)'>
-            <div class="form-group">
-    
-                <!-- <input type="text" name="id" id="id" #id='ngModel' ngModel class="form-control" required> -->
-    
-                <div class="container h-100 text-center" style="margin-top:10px">
-                    <h3>Search Your Booking Details</h3>   
-                    <div class="d-flex justify-content-center h-100">
-                        <div class="searchbar">  
-                            <input class="search_input" type="text" name="userId" id="userId"
-                                #userId='ngModel' ngModel placeholder="Enter your User Id" >
-                                <button type="submit" class="btn btn-outline-primary"
-                    [disabled]='searchForm.invalid'>Search</button>
-                            <!-- <a href="#" class="search_icon"><i class="fas fa-search"></i></a> -->
-                        </div>
-                    </div>
-                </div>
-    
-            </div>
-        </form>
+<body>       
         <!-- <form #searchForm="ngForm" (ngSubmit)="getProfiles(searchForm)">
             <div class="form-group">
                 <label for="userId" >UserId :</label>
               <input type="text" #userId='ngModel' ngModel name="userId" style="padding-right: 80px;">
-
             </div>
             <div class="btn-group float-right">
                 <button type="submit" class="btn btn-outline-primary"
                     [disabled]='searchForm.invalid'>Search</button>
             </div>
         </form> -->
-    <!-- </div>
-</div> -->
-<div  *ngIf="profileInfo.statusCode == 210 ">
-<table class="table table-bordered table-hover">
+
+ <div style="padding-top: 60px;" *ngIf="profileInfo.statusCode == 210 ">
+  
+ <table class="table table-bordered table-hover">
     <thead class="thead-dark">
         <tr>
             <th scope="col">User ID</th>
@@ -64,6 +30,7 @@
             <th scope="col">Arrival Time</th>
             <th scope="col">No. of passengers</th>
             <th scope="col">Total Fare</th>
+            <th scope="col">Cancel</th>
         </tr>
     </thead>
     <tbody style="background-color: rgb(163, 158, 158);">
@@ -83,11 +50,14 @@
             <td style="color: white;">{{profile.arrivalTime}}</td>
             <td style="color: white;">{{profile.passengers}}</td>
             <td style="color: white;">{{profile.totalFare |currency: 'INR'}}</td>
-
+            <td>
+                <button class="btn btn-danger" (click)='cancelBooking(profile)'>Cancel</button>
+            </td>
         </tr>
 
     </tbody>
 </table>
+
 </div>
 <div class="text-center" style="color: red;">
     <h3 *ngIf="profileInfo.statusCode === 401">{{profileInfo.description}}</h3>

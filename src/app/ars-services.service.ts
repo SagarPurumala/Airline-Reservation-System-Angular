@@ -12,7 +12,7 @@ import { ProfileInfo } from './profileInfo';
 export class ArsServicesService {
 
   databaseURL = 'http://localhost:8080';
-
+  id;
   constructor(private http: HttpClient) { }
 
   //admin functionality is done using this array
@@ -73,6 +73,10 @@ export class ArsServicesService {
   bookTicket(data) {
     return this.http.post(`${this.databaseURL}/bookFlight`, data);
   }
+   //cancel booking
+   cancelBooking(data) {
+    return this.http.delete(`${this.databaseURL}/deleteBooking?bookingId=${data}`);
+  }
 
   //search Location
   searchLocation(data) {
@@ -80,10 +84,15 @@ export class ArsServicesService {
   }
 
   //get profile info
-
-  getProfileInfo(profileInfo: ProfileInfo): Observable<any> {
-    return this.http.get<any>(`${this.databaseURL}/getAllBooking/${profileInfo.userId}`);
+  getProfileInfo(): Observable<any> {
+    this.id=localStorage.getItem('userId');
+    console.log(this.id);
+    return this.http.get<any>(`${this.databaseURL}/getAllBooking/${this.id}`);
   }
+
+  // getProfileInfo(profileInfo: ProfileInfo): Observable<any> {
+  //   return this.http.get<any>(`${this.databaseURL}/getAllBooking/${profileInfo.userId}`);
+  // }
   // getProfileInfo(data): Observable<any> {
   //   return this.http.get<any>(`${this.databaseURL}/getAllBooking`,data);
   // }
