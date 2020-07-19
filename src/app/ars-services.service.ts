@@ -20,22 +20,6 @@ export class ArsServicesService {
   airportInfo: AirportInfo[] = [];
 
 
-  getFlightInformation() {
-    this.http.get<any>(`${this.databaseURL}`).subscribe(data => {
-      console.log(data);
-      this.flightInfo = data;
-      console.log(this.flightInfo);
-    });
-  }
-
-  isLoggedIn() {
-    const userDetails = JSON.parse(localStorage.getItem('user'));
-    if (userDetails) {
-      return true;
-    } else {
-      return false;
-    }
-  }
 
   //for login
   userLogin(data) {
@@ -90,16 +74,27 @@ export class ArsServicesService {
     return this.http.get<any>(`${this.databaseURL}/getAllBooking/${this.id}`);
   }
 
-  // getProfileInfo(profileInfo: ProfileInfo): Observable<any> {
-  //   return this.http.get<any>(`${this.databaseURL}/getAllBooking/${profileInfo.userId}`);
-  // }
-  // getProfileInfo(data): Observable<any> {
-  //   return this.http.get<any>(`${this.databaseURL}/getAllBooking`,data);
-  // }
 
   //get all airport-info for admin only 
   getAllAirport(): Observable<any> {
     return this.http.get<any>(`${this.databaseURL}/getAllAirports`);
+  }
+  
+  getFlightInformation() {
+    this.http.get<any>(`${this.databaseURL}`).subscribe(data => {
+      console.log(data);
+      this.flightInfo = data;
+      console.log(this.flightInfo);
+    });
+  }
+
+  isLoggedIn() {
+    const userDetails = JSON.parse(localStorage.getItem('user'));
+    if (userDetails) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   //cancel a airport

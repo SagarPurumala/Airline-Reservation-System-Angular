@@ -1,0 +1,8 @@
+body{
+    background-image: url("https://images.unsplash.com/photo-1561555584-64e389bf4519?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: center;
+    background-attachment: fixed;
+}

@@ -21,6 +21,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { AirportComponent } from './airport/airport.component';
 import { AddAirportComponent } from './add-airport/add-airport.component';
 import { SearchFlightHomeComponent } from './search-flight-home/search-flight-home.component';
+import { AboutComponent } from './about/about.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { SearchFlightHomeComponent } from './search-flight-home/search-flight-ho
     AirportComponent,
     AddAirportComponent,
     SearchFlightHomeComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

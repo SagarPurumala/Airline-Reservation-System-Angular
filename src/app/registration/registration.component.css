@@ -1,6 +1,8 @@
 body{
     /* background-image: url("https://cdn.pixabay.com/photo/2016/02/16/16/57/login-1203603__340.png"); */
-   background-image: url("https://akm-img-a-in.tosshub.com/sites/btmt/images/stories/airline_660_122918080637.jpg"); 
-    background-size: cover;
-    background-position-x: center;
+   background-image: url("https://images.unsplash.com/photo-1517429128955-67ff5c1e29da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"); 
+   background-repeat: no-repeat; 
+   background-size: cover; 
+   background-position: center; 
+   height: 640px;
 }

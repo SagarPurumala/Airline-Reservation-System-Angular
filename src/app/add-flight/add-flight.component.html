@@ -6,6 +6,7 @@
                     <div class="card-body">
                         <div class="form-row"></div>
                         <form #addFlight="ngForm" (ngSubmit)="addFlightDetails(addFlight)">
+                            <h3 class="text-center">Add Flight</h3>
                             <div class="form-group">
                                 <label for="flightNo">Flight Number</label>
                                 <input type="text" name="flightNumber" #flightNumber='ngModel' class="form-control"

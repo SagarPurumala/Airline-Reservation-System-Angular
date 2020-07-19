@@ -17,6 +17,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { AirportComponent } from './airport/airport.component';
 import { AddAirportComponent } from './add-airport/add-airport.component';
 import { SearchFlightHomeComponent } from './search-flight-home/search-flight-home.component';
+import { AboutComponent } from './about/about.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'searched-flight', component: SearchedFlightComponent, canActivate : [AuthGuard] , data : {expectedRole : ['admin','user']}},
   { path : 'profile', component : ProfileComponent, canActivate : [AuthGuard] , data : {expectedRole : ['user']}},
   { path: 'search-flight', component: SearchFlightHomeComponent},
+  {path:'about',component:AboutComponent},
   { path: 'airport', component: AirportComponent, canActivate : [AuthGuard] , data : {expectedRole : ['admin']}},
   { path: 'add-airport', component: AddAirportComponent, canActivate : [AuthGuard] , data : {expectedRole : ['admin']}},
 ];

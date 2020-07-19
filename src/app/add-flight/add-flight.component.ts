@@ -32,6 +32,7 @@ export class AddFlightComponent implements OnInit {
       
       console.log(response);
       form.reset();
+      alert("Flight Added successfully!!!");
     }, err => {
       console.log(err);
     })
