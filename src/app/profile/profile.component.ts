@@ -53,17 +53,7 @@ export class ProfileComponent implements OnInit {
     })
   }
  
-//   getProfiles(searchForm: NgForm) {
-// //console.log(searchForm.value);
-//     this.service.getProfileInfo(searchForm.value).subscribe(data => {
-//       console.log(data);
-//       this.profileInfo=data;
-//       console.log(this.profileInfo);
-//     }, err => {
-//       console.log(err);
 
-//     })
-//   }
 
   cancelBooking(profileInfo: ProfileInfo) {
     this.service.cancelBooking(profileInfo.bookingId).subscribe(response => {
